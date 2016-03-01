@@ -1,8 +1,26 @@
 import Peer from 'simple-peer'
+import React, { createElement } from 'react'
+import { render } from 'react-dom'
+
+const link = createElement(
+  'a', //type
+  {
+    href: 'https://facebook.github.io/react/',
+    title: 'Read the docs'
+  }, // props
+  'Hello, React!' //Children
+
+)
+
+const container = document.getElementById('app-container')
+render(
+  link, //The element
+  container // where to render it - see next slide
+)
 
 const p1 = Peer({trickle: false, initiator: true})
 const p2 = Peer({trickle: false})
-
+// --- P1 ------------------------------------------------------------
 p1.on('signal', (data) => {
   console.log('p1 signal', data)
   p2.signal(data)
@@ -14,7 +32,7 @@ p1.on('connect', () => {
 p1.on('data', (data) => console.log('p1 received', data.toString('utf-8')))
 p1.on('error', (error) => console.error('p1 error', error))
 p1.on('close', () => console.log('p1 connection closed'))
-
+// --- P2 ------------------------------------------------------------
 p2.on('signal', (data) => {
   console.log('p2 signal', data)
   p1.signal(data)
