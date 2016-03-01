@@ -2,29 +2,22 @@ import Peer from 'simple-peer'
 import React, { createElement } from 'react'
 import { render } from 'react-dom'
 
-const link = createElement(
-  'a', //type "required"
-  {
-    href: 'https://facebook.github.io/react/',
-    title: 'Read the docs'
-  }, // props "optional"
-  'Hello, React!' //Children "optional"
-
+const root = (
+  <div>
+    <h1>Its all elements</h1>
+    <a
+      title = 'Read the docs'
+      href = 'https://facebook.github.io/react/'
+    >
+      Hello, React!
+    </a>
+  </div>
 )
 
-// const container = document.getElementById('app-container')
-// render(
-//   link, //The element
-//   container // where to render it - see next slide
-// )
-
 const container = document.getElementById('app-container')
-
-const heading = createElement('h1' , {}, "Its all just elements")
-const root = createElement('div',{}, heading, link)
 render(
-  root, //Look out It have changed
-  container
+  root,     // The element
+  container // Where to render it - see next slide
 )
 
 const p1 = Peer({trickle: false, initiator: true})
