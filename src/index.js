@@ -3,19 +3,28 @@ import React, { createElement } from 'react'
 import { render } from 'react-dom'
 
 const link = createElement(
-  'a', //type
+  'a', //type "required"
   {
     href: 'https://facebook.github.io/react/',
     title: 'Read the docs'
-  }, // props
-  'Hello, React!' //Children
+  }, // props "optional"
+  'Hello, React!' //Children "optional"
 
 )
 
+// const container = document.getElementById('app-container')
+// render(
+//   link, //The element
+//   container // where to render it - see next slide
+// )
+
 const container = document.getElementById('app-container')
+
+const heading = createElement('h1' , {}, "Its all just elements")
+const root = createElement('div',{}, heading, link)
 render(
-  link, //The element
-  container // where to render it - see next slide
+  root, //Look out It have changed
+  container
 )
 
 const p1 = Peer({trickle: false, initiator: true})
